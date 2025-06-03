@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farewell 2025 - Vijaya College Mulki</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #d63384;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #d63384;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d63384;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile menu toggle */
+        .mobile-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            background: linear-gradient(rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.1));
+        }
+
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .hero-image {
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .hero-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #d63384, #fd7e14);
+            border-radius: 2px;
+        }
+
+        /* Gallery Section */
+        .gallery-nav {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .gallery-btn {
+            padding: 0.8rem 2rem;
+            background: #fff;
+            border: 2px solid #d63384;
+            color: #d63384;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .gallery-btn:hover,
+        .gallery-btn.active {
+            background: #d63384;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 250px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            color: white;
+            padding: 2rem 1rem 1rem;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Messages Section */
+        .messages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .message-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .message-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(45deg, #d63384, #fd7e14);
+        }
+
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .message-text {
+            font-style: italic;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .message-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info h4 {
+            color: #2c3e50;
+            margin-bottom: 0.3rem;
+        }
+
+        .author-info p {
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Highlights Section */
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+        }
+
+        .highlight-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .highlight-content {
+            padding: 2rem;
+        }
+
+        .highlight-content h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
+        }
+
+        .highlight-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .highlight-date {
+            color: #d63384;
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Video Player */
+        .video-container {
+            position: relative;
+            margin: 3rem 0;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .video-player {
+            width: 100%;
+            height: 400px;
+            border: none;
+        }
+
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+        }
+
+        .footer h3 {
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .footer p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease;
+        }
+
+        /* Fullscreen Gallery Modal */
+        .gallery-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            overflow: hidden;
+        }
+
+        .gallery-modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2001;
+            background: rgba(0, 0, 0, 0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2001;
+        }
+
+        .modal-nav:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .modal-prev {
+            left: 20px;
+        }
+
+        .modal-next {
+            right: 20px;
+        }
+
+        .modal-counter {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .modal-info {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .modal-info h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .modal-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Touch/Swipe indicators */
+        .swipe-indicator {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.8rem;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .swipe-left {
+            left: 80px;
+        }
+
+        .swipe-right {
+            right: 80px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(255, 255, 255, 0.95);
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .mobile-toggle {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section {
+                padding: 3rem 1rem;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .messages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-nav {
+                gap: 1rem;
+            }
+
+            .gallery-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">Farewell 2025</a>
+            <div class="mobile-toggle" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#messages">Messages</a></li>
+                <li><a href="#highlights">Highlights</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <br><h1>Farewell of BCA,2022-2025</h1>
+            <p>Three years of memories, friendships, and growth at Vijaya College, Mulki. As we embark on new journeys, we carry with us the bonds we've forged and the moments we've shared. This is our story, our legacy, and our tribute to the incredible journey we've had together.</p>
+            <!-- REPLACE THIS IMAGE: Add your main group photo of the 2022-2025 batch -->
+            <!-- Recommended: A high-quality group photo from graduation day or a memorable class event -->
+            <img src="c6.jpg" alt="Class of 2025 Group Photo" class="hero-image">
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="section">
+        <h2 class="section-title">Batch 2022-25 Mini Gallery</h2>
+        
+        <div class="gallery-nav">
+            <button class="gallery-btn active" onclick="filterGallery('all')">All Memories</button>
+            <button class="gallery-btn" onclick="filterGallery('events')">College Events</button>
+            <button class="gallery-btn" onclick="filterGallery('trips')">Trips & Outings</button>
+            <button class="gallery-btn" onclick="filterGallery('moments')">Random Moments</button>
+        </div>
+
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- REPLACE THESE IMAGES: Add your actual college photos -->
+            <!-- Event Photos -->
+            <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: College fest or annual day photo -->
+                <img src="c17.jpg" alt="College Annual Day">
+                <div class="gallery-overlay">
+                    <h3>Annual Day Celebration</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: College fest or annual day photo -->
+                <img src="b4.jpg" alt="College Annual Day">
+                <div class="gallery-overlay">
+                    <h3>Annual Day Celebration</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="g3.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Girls with Lectures</h3>
+                </div>
+            </div>
+
+             <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: Cafeteria or break time photo -->
+                <img src="c10.jpg" alt="Traditional Day">
+                <div class="gallery-overlay">
+                    <h3>Traditonal Day</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: Sports day or competition photo -->
+                <img src="c8.jpg" alt="Talents Day">
+                <div class="gallery-overlay">
+                    <h3>Talents Day Victory</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: Cafeteria or break time photo -->
+                <img src="c3.jpg" alt="Talent's Day">
+                <div class="gallery-overlay">
+                    <h3>Talent's Day</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="events">
+                <!-- ADD IMAGE: Cafeteria or break time photo -->
+                <img src="c2.jpg" alt="Talent's Day">
+                <div class="gallery-overlay">
+                    <h3>Talent's Day</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="g2.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Classroom Chronicles</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="b1.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Boys Gang</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a1.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>selfie time</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="g13.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Classroom Chronicles</h3>
+                </div>
+            </div>
+            
+             <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a10.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Classroom Chronicles</h3>
+                </div>
+            </div>
+        
+             <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a5.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Vivanta Fest</h3>
+                </div>
+            </div>
+
+            
+             <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a12.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>NSS Camp</h3>
+                </div>
+            </div>
+
+            
+             <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="g14.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Saree Glam</h3>
+                </div>
+            </div>
+            
+             <div class="gallery-item" data-category="trips">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="b3.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Boys Gang</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="trips">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a16.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Manasa Trip</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="trips">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="tr.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Boys Gang</h3>
+                </div>
+            </div>
+            <div class="gallery-item" data-category="events">
+                
+                <img src="c4.jpg" alt="Talent's Day">
+                <div class="gallery-overlay">
+                    <h3>Talent's Day</h3>
+                </div>
+            </div>
+             <div class="gallery-item" data-category="events">
+                <img src="c5.jpg" alt="Talent's Day">
+                <div class="gallery-overlay">
+                    <h3>Talent's Day</h3>
+                </div>
+            </div>
+
+
+             <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Cafeteria or break time photo -->
+                <img src="g10.jpg" alt="Talent's Day">
+                <div class="gallery-overlay">
+                    <h3>Girls Gang</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a3.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>selfie time</h3>
+                </div>
+            </div>
+
+            <div class="gallery-item" data-category="moments">
+                <!-- ADD IMAGE: Candid classroom or campus photo -->
+                <img src="a0.jpg" alt="Moments">
+                <div class="gallery-overlay">
+                    <h3>Exhibition Day </h3>
+                </div>
+            </div>
+
+
+
+        </div>
+    </section>
+
+    <!-- Fullscreen Gallery Modal -->
+    <div id="galleryModal" class="gallery-modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeGalleryModal()">&times;</span>
+            <button class="modal-nav modal-prev" onclick="prevImage()">&#8249;</button>
+            <button class="modal-nav modal-next" onclick="nextImage()">&#8250;</button>
+            
+            <img id="modalImage" class="modal-image" src="" alt="">
+            
+            <div class="modal-info" id="modalInfo">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDescription"></p>
+            </div>
+            
+            <div class="modal-counter" id="modalCounter">1 / 8</div>
+            
+            <div class="swipe-indicator swipe-left">← Swipe</div>
+            <div class="swipe-indicator swipe-right">Swipe →</div>
+        </div>
+    </div>
+
+    <!-- Messages Section -->
+    <section id="messages" class="section">
+        <h2 class="section-title">Heartfelt Messages</h2>
+        
+        <div class="messages-grid">
+            <!-- REPLACE THESE MESSAGES: Add actual messages from juniors and teachers -->
+             <div class="message-card">
+                <p class="message-text">"Your dedication to academics and extracurricular activities has been exemplary. You've left a legacy that will inspire generations of students to come. Best wishes for your bright future!"</p>
+                <div class="message-author">
+                    <!-- ADD IMAGE: Another teacher's photo -->
+            
+                    <div class="author-info">
+                        <h4>Venkatesh Bhat</h4>
+                        <p>Principal</p>
+                    </div>
+                </div>
+            </div>
+            
+
+            <div class="message-card">
+                <p class="message-text">"As you step out into the world beyond these walls, know that you carry with you our best wishes and the pride of your department. May the journey ahead be filled with growth, purpose, and success. Always strive for excellence and stay true to your values.Farewell and good luck!Best wishes with blessings from your Jyothi madam..."</p>
+                <div class="message-author">
+                    <!-- ADD IMAGE: Junior student's photo -->
+                    <div class="author-info">
+                        <h4>Jyothi Shankar Salien</h4>
+                        <p>Head of Department</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Highlights Section -->
+    <section id="highlights" class="section">
+        <h2 class="section-title">Memorable Highlights</h2>
+        
+        <div class="highlights-grid">
+            <!-- REPLACE THESE HIGHLIGHTS: Add your actual college achievements and memorable moments -->
+            <div class="highlight-card">
+                <!-- ADD IMAGE: Achievement or award ceremony photo -->
+                <img src="c.jpg" alt="Vivanta Fest" class="highlight-image">
+                <div class="highlight-content">
+                    <h3>Vivanta Fest</h3>
+                    <p>SuccessFul Organisation of vijayosthava Vivanta Fest 2024-25</p>
+                    <div class="highlight-date">Nov 2024</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="footer">
+    <h3>Until We Meet Again</h3>
+    <p>Dear Seniors, as you close this beautiful chapter at Vijaya College, Mulki, we want you to know how much you've meant to us. You've been our guides, mentors, and inspiration. From sharing notes to showing us the ropes of college life, you've been pillars of support we could always count on. Though you're moving toward new horizons, the impact you've made will remain forever. We promise to carry forward the legacy of kindness and excellence you've left behind. Here's to your bright futures and the promise that this is just "until we meet again."</p>
+    <br>
+    <p><strong>From Your Juniors | Class of 2023-2026 | Vijaya College, Mulki</strong></p>
+</footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Gallery filter functionality
+        function filterGallery(category) {
+            const items = document.querySelectorAll('.gallery-item');
+            const buttons = document.querySelectorAll('.gallery-btn');
+            
+            // Update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Filter items
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'scale(1)';
+                    }, 100);
+                } else {
+                    item.style.opacity = '0';
+                    item.style.transform = 'scale(0.8)';
+                    setTimeout(() => {
+                        item.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // Gallery modal variables
+        let currentImageIndex = 0;
+        let galleryImages = [];
+        let startX = 0;
+        let startY = 0;
+
+        // Initialize gallery images array
+        function initializeGallery() {
+            const visibleItems = document.querySelectorAll('.gallery-item[style*="block"], .gallery-item:not([style*="none"])');
+            galleryImages = Array.from(visibleItems).map(item => {
+                const img = item.querySelector('img');
+                const overlay = item.querySelector('.gallery-overlay');
+                const title = overlay.querySelector('h3').textContent;
+                const description = overlay.querySelector('p') ? overlay.querySelector('p').textContent : '';
+                
+                return {
+                    src: img.src,
+                    alt: img.alt,
+                    title: title,
+                    description: description
+                };
+            });
+        }
+
+        // Open gallery modal
+        function openGalleryModal(clickedItem) {
+            initializeGallery();
+            
+            // Find the index of clicked image
+            const visibleItems = document.querySelectorAll('.gallery-item[style*="block"], .gallery-item:not([style*="none"])');
+            currentImageIndex = Array.from(visibleItems).indexOf(clickedItem);
+            
+            const modal = document.getElementById('galleryModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            
+            showImage(currentImageIndex);
+            setupTouchEvents();
+        }
+
+        // Close gallery modal
+        function closeGalleryModal() {
+            const modal = document.getElementById('galleryModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+            removeTouchEvents();
+        }
+
+        // Show specific image
+        function showImage(index) {
+            if (index < 0 || index >= galleryImages.length) return;
+            
+            const image = galleryImages[index];
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            const modalCounter = document.getElementById('modalCounter');
+            
+            modalImage.src = image.src;
+            modalImage.alt = image.alt;
+            modalTitle.textContent = image.title;
+            modalDescription.textContent = image.description;
+            modalCounter.textContent = `${index + 1} / ${galleryImages.length}`;
+            
+            currentImageIndex = index;
+        }
+
+        // Navigate to previous image
+        function prevImage() {
+            const newIndex = currentImageIndex > 0 ? currentImageIndex - 1 : galleryImages.length - 1;
+            showImage(newIndex);
+        }
+
+        // Navigate to next image
+        function nextImage() {
+            const newIndex = currentImageIndex < galleryImages.length - 1 ? currentImageIndex + 1 : 0;
+            showImage(newIndex);
+        }
+
+        // Touch and swipe events
+        function setupTouchEvents() {
+            const modal = document.getElementById('galleryModal');
+            
+            modal.addEventListener('touchstart', handleTouchStart, { passive: true });
+            modal.addEventListener('touchmove', handleTouchMove, { passive: true });
+            modal.addEventListener('touchend', handleTouchEnd, { passive: true });
+            
+            // Mouse events for desktop
+            modal.addEventListener('mousedown', handleMouseDown);
+            modal.addEventListener('mousemove', handleMouseMove);
+            modal.addEventListener('mouseup', handleMouseUp);
+        }
+
+        function removeTouchEvents() {
+            const modal = document.getElementById('galleryModal');
+            
+            modal.removeEventListener('touchstart', handleTouchStart);
+            modal.removeEventListener('touchmove', handleTouchMove);
+            modal.removeEventListener('touchend', handleTouchEnd);
+            modal.removeEventListener('mousedown', handleMouseDown);
+            modal.removeEventListener('mousemove', handleMouseMove);
+            modal.removeEventListener('mouseup', handleMouseUp);
+        }
+
+        function handleTouchStart(e) {
+            startX = e.touches[0].clientX;
+            startY = e.touches[0].clientY;
+        }
+
+        function handleTouchMove(e) {
+            if (!startX || !startY) return;
+            
+            const deltaX = e.touches[0].clientX - startX;
+            const deltaY = e.touches[0].clientY - startY;
+            
+            // Only handle horizontal swipes
+            if (Math.abs(deltaX) > Math.abs(deltaY)) {
+                e.preventDefault();
+            }
+        }
+
+        function handleTouchEnd(e) {
+            if (!startX || !startY) return;
+            
+            const endX = e.changedTouches[0].clientX;
+            const endY = e.changedTouches[0].clientY;
+            const deltaX = endX - startX;
+            const deltaY = endY - startY;
+            
+            // Check if it's a horizontal swipe
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    prevImage(); // Swipe right = previous
+                } else {
+                    nextImage(); // Swipe left = next
+                }
+            }
+            
+            startX = 0;
+            startY = 0;
+        }
+
+        // Mouse events for desktop dragging
+        let isMouseDown = false;
+
+        function handleMouseDown(e) {
+            isMouseDown = true;
+            startX = e.clientX;
+            startY = e.clientY;
+        }
+
+        function handleMouseMove(e) {
+            if (!isMouseDown) return;
+            e.preventDefault();
+        }
+
+        function handleMouseUp(e) {
+            if (!isMouseDown) return;
+            
+            const deltaX = e.clientX - startX;
+            const deltaY = e.clientY - startY;
+            
+            if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 50) {
+                if (deltaX > 0) {
+                    prevImage();
+                } else {
+                    nextImage();
+                }
+            }
+            
+            isMouseDown = false;
+            startX = 0;
+            startY = 0;
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('galleryModal');
+            if (!modal.classList.contains('active')) return;
+            
+            switch(e.key) {
+                case 'ArrowLeft':
+                    prevImage();
+                    break;
+                case 'ArrowRight':
+                    nextImage();
+                    break;
+                case 'Escape':
+                    closeGalleryModal();
+                    break;
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                
+                // Close mobile menu if open
+                const navLinks = document.getElementById('navLinks');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Initialize gallery on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeGallery();
+        });
+    </script>
